@@ -1,4 +1,30 @@
 <!doctype html>
+<?php
+  function print_catagory(){
+    $list = scandir('mainhomedata');
+    for($i = 0; $i < count($list); $i++){
+      if($list[$i] != '.'){
+        if($list[$i] != '..'){
+          ?>
+          <a href="mainhome.php?page=<?=$list[$i]?>"><?=$list[$i]?></a>
+          <?php
+        }
+      }
+    }
+  }
+  function print_decription(){
+    $page = null;
+      if(isset($_GET['page'])){
+        echo file_GET_contents("mainhomedata/".$_GET['page']);
+      }
+      else{
+        ?><br><br>
+        <h2><center>
+        <?php
+        Echo '환영합니다. 시작페이지입니다.';
+      }
+    }
+?>
 <html>
 <head>
   <title>example page</title>
@@ -68,16 +94,7 @@
   <div class="title" >
     <center><h3>
     <?php
-      $list = scandir('mainhomedata');
-      for($i = 0; $i < count($list); $i++){
-        if($list[$i] != '.'){
-          if($list[$i] != '..'){
-            ?>
-            <a href="mainhome.php?page=<?=$list[$i]?>"><?=$list[$i]?></a>
-            <?php
-          }
-        }
-      }
+      print_catagory();
        ?>
     <center></h3>
   </div>
@@ -113,22 +130,8 @@
         <p><center><strong><a href="">신희범</a></strong></center></p>
   </div>
   <?php
-  $page = null;
-    if(isset($_GET['page'])){
-    }
-    else{
-      ?><br><br>
-      <h2><center>
-      <?php
-      Echo '환영합니다. 시작페이지입니다.';
-    }
+  print_decription();
    ?>
  </center></h2>
-  <br>
-  <?php
-  if(isset($_GET['page'])){
-    echo file_GET_contents("mainhomedata/".$_GET['page']);
-  }
- ?>
   </body>
 </html>
