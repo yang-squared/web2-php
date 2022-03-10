@@ -1,5 +1,13 @@
 <!doctype html>
 <?php
+  function print_title(){
+    if(isset($_GET['page'])){
+      echo $_GET['page'];
+    }
+    else{
+      Echo '입장페이지';
+    }
+  }
   function print_catagory(){
     $list = scandir('mainhomedata');
     for($i = 0; $i < count($list); $i++){
@@ -13,7 +21,6 @@
     }
   }
   function print_decription(){
-    $page = null;
       if(isset($_GET['page'])){
         echo file_GET_contents("mainhomedata/".$_GET['page']);
       }
@@ -27,7 +34,7 @@
 ?>
 <html>
 <head>
-  <title>example page</title>
+  <title><?php print_title(); ?></title>
   <meta charset="utf-8">
 
   <style>
