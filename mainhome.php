@@ -1,98 +1,15 @@
 <!doctype html>
 <?php
-  function print_title(){
-    if(isset($_GET['page'])){
-      echo $_GET['page'];
-    }
-    else{
-      Echo '입장페이지';
-    }
-  }
-  function print_catagory(){
-    $list = scandir('mainhomedata');
-    for($i = 0; $i < count($list); $i++){
-      if($list[$i] != '.'){
-        if($list[$i] != '..'){
-          ?>
-          <a href="mainhome.php?page=<?=$list[$i]?>"><?=$list[$i]?></a>
-          <?php
-        }
-      }
-    }
-  }
-  function print_decription(){
-      if(isset($_GET['page'])){
-        echo file_GET_contents("mainhomedata/".$_GET['page']);
-      }
-      else{
-        ?><br><br>
-        <h2><center>
-        <?php
-        Echo '환영합니다. 시작페이지입니다.';
-      }
-    }
-?>
+require('lib/print.php');
+ ?>
 <html>
 <head>
   <title><?php print_title(); ?></title>
   <meta charset="utf-8">
+<?php
+require('lib/style.php');
+ ?>
 
-  <style>
-    a{
-      color: #000;
-      text-decoration-line: none;
-    }
-    div{
-      margin-top: 5px;
-    }
-    div.main-title{
-        width: 95%;
-        float: left;
-        display: inline;
-        margin-left: 10px;
-        margin-right: 10px;
-        padding: 10px;
-      }
-
-    div.title{
-        background-color: gray;
-        width: 95%;
-        float: left;
-        display: inline;
-        margin-bottom: 10px;
-        margin: 10px;
-        word-spacing: 50px;
-      }
-
-    div.left-col{
-        background-color: skyblue;
-        float: left;
-        width: 15%;
-        height: max;
-        margin-left: 10px;
-        margin-right: 10px;
-        overflow: hidden;
-      }
-
-    div.center-col{
-      background-color: yellowgreen;
-      margin-top: 10px;
-      margin-left: 10px;
-      width: max;
-      float: center;
-      display: block;
-      overflow: hidden;
-    }
-
-    div.right-col{
-      background-color: skyblue;
-      float: right;
-      width: 15%;
-      height: max;
-      margin-left: 10px;
-      overflow: hidden;
-      }
-  </style>
 </head>
 
 
@@ -131,10 +48,10 @@
 
   <div class="right-col">
     <h2><center>친구 목록</center></h2>
-        <p><center><strong><a href="">송창현</a></strong></center></p>
-        <p><center><strong><a href="">이우민</a></strong></center></p>
-        <p><center><strong><a href="">김홍구</a></strong></center></p>
-        <p><center><strong><a href="">신희범</a></strong></center></p>
+        <p><center><strong><a href="">친구1</a></strong></center></p>
+        <p><center><strong><a href="">친구2</a></strong></center></p>
+        <p><center><strong><a href="">친구3</a></strong></center></p>
+        <p><center><strong><a href="">친구4</a></strong></center></p>
   </div>
   <?php
   print_decription();
